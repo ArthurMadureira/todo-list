@@ -7,18 +7,18 @@ import { CardHeader } from './components/CardHeader';
 import { FiPlusCircle } from 'react-icons/fi'
 import styles from './App.module.css'
 
+interface Todos {
+  id: string;
+  title: string;
+  isChecked: boolean;
+}
+
 export function App() {
 
 
-  const [todos, setTodos] = useState([
-    {
-      id: uuidv4(),
-      title: "Oi",
-      isChecked: false
-    }
-  ])
+  const [todos, setTodos] = useState<Todos[]>([])
 
-  function handleNewTodos(e: FormEvent) {
+  function handleNewTodos(e: any) {
     e.preventDefault()
 
     setTodos([...todos, {
@@ -26,8 +26,25 @@ export function App() {
       title: e.target.input.value,
       isChecked: false
     }])
-    console.log(e.target.input.value);
 
+    e.target.input.value = ''
+
+  }
+
+
+  function handleCompleteTask(todoId: string) {
+    setTodos((state) => {
+      return state.map(todo => {
+        if (todo.id == todoId) {
+          return {
+            ...todo,
+            isChecked: !todo.isChecked
+          }
+        }
+
+        return todo
+      })
+    })
   }
 
   function deleteTodo(todoToDelete: any) {
@@ -67,7 +84,14 @@ export function App() {
           <div className={styles.cardList}>
 
             {todos.map(todo => {
-              return <Card key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+              return (
+                <Card
+                  key={todo.id}
+                  todo={todo}
+                  deleteTodo={deleteTodo}
+                  onCompleteTask={handleCompleteTask}
+                />
+              )
             })}
           </div>
         </div>
