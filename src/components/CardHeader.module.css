@@ -1,0 +1,25 @@
+.cardHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1.5rem;
+}
+
+.cardHeader p:nth-child(1) {
+  color: var(--blue-200);
+}
+
+.cardHeader p:nth-child(2) {
+  color: var(--purple-600);
+}
+
+.cardHeader p span {
+  color: var(--gray-100);
+  background: var(--gray-400);
+  border-radius: 999px;
+  padding: 2px 8px;
+  width: 24px;
+  height: 19px;
+}
