@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Header } from './components/Header';
 import { Card } from './components/Card';
@@ -102,5 +102,3 @@ export function App() {
 }
 
 
-
-// const { todoInput } = useContext(TodoContext)
