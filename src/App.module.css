@@ -1,5 +1,5 @@
 .main {
-  width: 46rem;
+  width: min(90vw, 46rem);
   margin: auto;
 }
 
